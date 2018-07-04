@@ -1,0 +1,596 @@
+# NOTES - SHELL WORKSHOP 
+
+# 1 - Welcome! 
+
+# What is SHELL? 
+
+# SHELL is a command line interface to run programs
+# on your computer. It is also a command line for your
+# computer in general, as you change files, directories,
+# interacting with programs. You type the commands, 
+# and it shows you the output '
+
+# The shell that we will be using in this course is
+# the BASH SHELL, the most popular shell on Lynux and
+# Mac systems. To install BASH shell you will need
+# to install GIT BASH 
+
+# 4 - echo command
+
+# 'echo' is a command to print out messages on
+# your console, like the print() on Python 
+
+# On the example below, we are typing the message
+# between single quotes, as exclamation mark has other
+# meaning if it is outside of quotes:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ echo 'Hello shello!!'
+Hello shello!!
+
+
+# The dollar sign in front of a word means that the 
+# word is a shell variable, see the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ echo $COLUMNS X $LINES
+80 X 24
+
+# Note that it is case sensitive, the variables needs
+# to be called uppercased*/
+
+# 5 - Navigating trough directories (ls, cd, ..) 
+
+# ls means list, it lists all the files a particular
+# folder and cd means change directory, the last will
+# change the directory/folder/file you are accessing.
+# See the example below where I used cd to get to C:
+# directory and ls to list all the files inside it. 
+
+libor@DESKTOP-2TIO74E MINGW64 ~/downloads
+$ cd C:
+
+libor@DESKTOP-2TIO74E MINGW64 /c
+$ ls
+'$RECYCLE.BIN'/                oraclexe/
+'Arquivos de Programas'@       pagefile.sys
+'Arquivos de Programas RFB'/   PerfLogs/
+ Boot/                        'Program Files'/
+ bootmgr                      'Program Files (x86)'/
+ BOOTNXT                       ProgramData/
+ BOOTSECT.BAK                  Recovery/
+'Documents and Settings'@      SQLServer2016Media/
+ drivers/                      SQLServer2017Media/
+ ESD/                          swapfile.sys
+ fc650a69e9703714fc991f5ff9/  'System Volume Information'/
+ hiberfil.sys                  UserGuidePDF/
+ Intel/                        Users/
+ msdia80.dll*                  Windows/
+'Oracle Express 64'/           Windows.old/
+'Oracle SQL Developer'/
+
+# .. command (used with cd) will get you back to previous 
+# directory/folder/file, see example below:
+
+libor@DESKTOP-2TIO74E MINGW64 /c
+$ cd ..
+
+libor@DESKTOP-2TIO74E MINGW64 /
+$
+
+# ; command lets you run two commands at the same time,
+# see the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 /c/users/libor/datascience/python/scripts
+$ cd .. ; ls
+camelot.txt  flying_circus_cast.txt  Scripts/  second_file.txt  some_file.txt
+
+# Here I left from to scripts folder to python folder
+# and listed the files inside it
+
+# 6 - Printing working directory (pwd) */
+
+# Sometimes the terminal you are using will
+# not show you the directory you are at the 
+# moment, that is when you use pwd command.
+
+libor@DESKTOP-2TIO74E MINGW64 /c
+$ pwd
+/c
+
+# Using ls with tilde (~) will list the home directory
+# from the path I am (in the example below, /c/users):
+
+libor@DESKTOP-2TIO74E MINGW64 /c/users
+$ ls ~
+'3D Objects'/
+'Ambiente de Impressão'@
+'Ambiente de Rede'@
+ Anaconda3/
+ AppData/
+'Configurações Locais'@
+ Contacts/
+ Cookies@
+'Dados de Aplicativos'@
+ DataScience/
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ ganttproject.log
+ IntelGraphicsProfiles/
+ Links/
+'Menu Iniciar'@
+'Meus Documentos'@
+ MicrosoftEdgeBackups/
+ Modelos@
+ Music/
+ NTUSER.DAT
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ NTUSER.DAT{b5fb2442-61b3-11e8-9f45-641c677d4642}.TM.blf
+ NTUSER.DAT{b5fb2442-61b3-11e8-9f45-641c677d4642}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{b5fb2442-61b3-11e8-9f45-641c677d4642}.TMContainer00000000000000000002.regtrans-ms
+ ntuser.ini
+ numpy/
+ OneDrive/
+ Oracle/
+ Pictures/
+ pytz-2018.4/
+ REACHit/
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+ src/
+ Tracing/
+ Videos/
+'VirtualBox VMs'/
+
+# ls with dot (.) or ls will list the working
+# directory
+
+libor@DESKTOP-2TIO74E MINGW64 /c/users
+$ ls .
+ Administrador/                  'MSSQL$SQLEXPRESS'/
+ Administrador.DESKTOP-2TIO74E/   Public/
+'All Users'@                     'ReportServer$SQL2016'/
+ Default/                        'SQLAgent$SQL2016'/
+'Default User'@                  'SQLTELEMETRY$SQL2016'/
+ Default.migrated/               'SQLTELEMETRY$SQLEXPRESS'/
+ desktop.ini                      TEMP/
+ libor/                          'Todos os Usuários'@
+'MSSQL$SQL2016'/                 'Usuário Padrão'@
+
+# ls and the name of the directory can give you the list
+# of the files inside it right away (/c on this example):
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ ls /c
+'$RECYCLE.BIN'/                oraclexe/
+'Arquivos de Programas'@       pagefile.sys
+'Arquivos de Programas RFB'/   PerfLogs/
+ Boot/                        'Program Files'/
+ bootmgr                      'Program Files (x86)'/
+ BOOTNXT                       ProgramData/
+ BOOTSECT.BAK                  Recovery/
+'Documents and Settings'@      SQLServer2016Media/
+ drivers/                      SQLServer2017Media/
+ ESD/                          swapfile.sys
+ fc650a69e9703714fc991f5ff9/  'System Volume Information'/
+ hiberfil.sys                  UserGuidePDF/
+ Intel/                        Users/
+ msdia80.dll*                  Windows/
+'Oracle Express 64'/           Windows.old/
+'Oracle SQL Developer'/
+
+# 7 - Parameters and options (ls -l) 
+
+# -l (dash with l) command is an option command
+# The 'ls -l' command will list the working directory/file
+# and shows more information on each of the folder/files 
+# inside it, like:
+# - name of all files/folders inside it
+# - date and time of last update
+# - the size (in bytes)
+# see the example below: 
+ 
+libor@DESKTOP-2TIO74E MINGW64 /c/users/libor/datascience
+$ ls -l
+total 5
+-rw-r--r-- 1 libor 197609 216 jun  2 07:34 'Lembretes de comandos para o GIT.txt'
+drwxr-xr-x 1 libor 197609   0 mai 29 22:36  Python/
+drwxr-xr-x 1 libor 197609   0 jun  6 19:45  SQL/
+
+# If you want to find a file/folder with a specific name,
+# you can use the '-l' together with 
+# 'DirectoryName/*.NameYouAreLookingFor', like the example:
+
+libor@DESKTOP-2TIO74E MINGW64 /c/users/libor/datascience
+$ ls -l *.txt
+-rw-r--r-- 1 libor 197609 216 jun  2 07:34 'Lembretes de comandos para o GIT.txt'
+
+# On this example, we will grab all the files from
+# 'datascience' folder ending with '.txt'
+
+# If you want to find the any file/folder starting with 
+# a specific word/letter you use * at the end of the command
+
+libor@DESKTOP-2TIO74E MINGW64 /c/users/libor/datascience
+$ ls -l S*
+total 0
+drwxr-xr-x 1 libor 197609 0 jun  6 19:45 Scripts/
+
+# Here we searched for a file starting with a capital S 
+# Remember that the command is case sensitive
+
+# 8. Organizing files (mkdir, mv)
+
+# mkdir stands for make directory
+# mv stands for move 
+
+# 8.1 - Creating a folder/file
+
+# here is an example of creating a new folder
+# inside Desktop
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ mkdir Desktop/'new_folder'
+
+# PRO TIPS:
+
+# the order of the text on the command needs 
+# to be from where you want to take the file/folder
+# to where you want to place it
+
+# If the change is inside one directory
+# and you are inside the directory, you don't
+# need to right the directory name, here is an
+# example:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Desktop
+$ mv file.txt new_folder
+
+# Returning the file to the Desktop,
+# would make the command look like this:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Desktop
+$ mv new_folder/file.txt file.txt
+
+# If I was out from the Desktop directory 
+# and I wanted to move file.txt from Desktop
+# to new_folder (which is inside Desktop dir), 
+# I need would need to use the name of the directory,
+# as below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ mv Desktop/file.txt Desktop/new_folder/
+
+# Now I am outside the Desktop and I want to move
+# the file.txt from new_folder (which is inside 
+# Desktop dir) and move it to Desktop, here is how it
+# looks like:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ mv Desktop/new_folder/file.txt Desktop/file.txt
+
+# this command can be written as:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ mv Desktop/new_folder/*. Desktop
+
+# It will move each file from the 'new_folder'
+# folder into the Desktop directory
+
+# we could accomplish that using this command
+# as well:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ cd Desktop; mv new_folder/*.txt .
+
+# we could accomplish that using this command
+# as well:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ cd Desktop/new_folder; mv * ..
+
+# it will enter the Desktop/new_folder directory,
+# and moves all the files (*) to the parent dir (..) 
+
+# /* it will enter the Desktop dir, 
+# and grab all the .txt files from  new_folder 
+# and move it to the Desktop dir (which is the
+# current directory) /* 
+
+# PRO TIP:
+
+# Single quotes and double quotes have different 
+# meaning on Shell, if doin't know which one is the 
+# appropriate, choose single quotes.
+
+# 9 - Download (curl)
+
+# This is the way to download files inside shell 
+# environment, see the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ cd Downloads/
+
+# First I entered the directory I want to download 
+# the file from
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ curl -L -o dictionary.txt 'https://tinyurl.com/zeyq9vc'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  916k  100  916k    0     0   447k      0  0:00:02  0:00:02 --:--:--  825k
+
+# Then I use the curl command followed by -L 
+# (dash and capital l), which means follow 
+# redirects. After that I use -o (dash and
+# lower o), it will save the file under a specific 
+# name
+
+# PRO TIP
+
+# Always use single quotes for the URL, as it can
+# come with some special characters that can be read
+# by shell environment in other way
+
+# 10 - File view (cat, less)
+
+# cat is the short for catenate (or concatenate),
+# which means run several things together.
+
+# cat read the file and output its content
+
+# less is the program that shows you piece by piece of
+# file, you can scroll down page by page or hit space 
+# to see line by line or hit arrows to up/down
+
+# PRO TIP
+
+# to quit less program press q (quit) 
+
+# to search for something, press / and
+# the name you are searching for
+
+# to go back, press b 
+
+# less will show the dictionary.txt file piece by
+# piece, and cat will run all the file until it hits
+# the end.
+ 
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ less dictionary.txt
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ cat dictionary.txt
+
+# 11 - Removing files (rm, rmdir)
+
+# rm is the short for removing files
+
+# PRO TIP
+
+# if you want to remove a file on safety way,
+# use '-i' program, like the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ rm -i dictionary.txt
+rm: remove regular file 'dictionary.txt'?
+
+# it will ask you if you really want to delete the
+# file you are about to delete 
+
+# rmdir is the program to remove directories 
+
+# Quiz - You have four files with the names:
+
+# 1) Good file
+# 2) Bad Name Good File 
+# 3) Bad File 
+# 4) Good Name Bad Face
+
+# What's a single command that will delete 3 and
+# 4, while leaving 1 and 2 intact ?
+
+# The two options below would work for the case:
+
+rm 'Bad File' 'Good Name Bad Face'
+
+rm *'Bad F'*
+
+# 12 - Search and Pipes (grep, wc)
+
+# grep means global regular expression print
+
+# This means that grep can be used to see if 
+# the input it receives matches a specified 
+# pattern
+
+# grep search for lines with particular contents
+# inside a file, see the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ grep shell dictionary.txt
+bombshell
+bombshell's
+bombshells
+bushelled
+bushelling
+cockleshell
+cockleshell's
+cockleshells
+eggshell
+
+# Above we searched for all lines inside the 
+# dictionary.txt file that contains the shell 
+# word
+
+# When the output of lines of lines searched is too
+# big, we can use the vertical bar | (pipe) to send
+# the output to less command, as the example below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ grep shell dictionary.txt | less
+  
+# It will create like a scroll down page so we can
+# all the results line by line 
+
+# wc means word count, it is used to count the number
+# of times a word is encountered inside a file/URL 
+
+# On this next example, we want to check how many lines
+# contains the word 'fish' on it 
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ curl -L 'https://tinyurl.com/zeyq9vc' | grep fish | wc -l
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+100  916k  100  916k    0     0   401k      0  0:00:02  0:00:02 --:--:--  873k
+105
+
+# grep found the 'fish' word on the URL and fed it 
+# to word count to list the number of lines it
+# was found on, in this case 105 lines. 
+
+# Another way of doing that is giving the grep a -c
+# to count the number of 'fish' words found, 
+# like below:
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ curl -L 'https://tinyurl.com/zeyq9vc' | grep -c fish
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  916k  100  916k    0     0   444k      0  0:00:02  0:00:02 --:--:--  926k
+105
+
+# Quiz - How many words of dictionary.txt matches
+# the standard 'ibo'?
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ grep -c ibo dictionary.txt
+22
+
+# the word appears 22 times on the dictionary
+
+# A regular expression, often shortened to “regex” or
+# “regexp”, is a way of specifying a pattern (a 
+# particular set of characters or words) in text
+# that can be applied to variable inputs to find all 
+# occurrences that match the pattern
+
+# more information here:
+# https://opensourceforu.com/2012/06/beginners-guide-gnu-grep-basics-regular-expressions/
+# http://linuxcommand.org/lc3_man_pages/grep1.html
+
+# here is an example of the usage of regex:
+
+# on the answer of the Quiz 12 of lesson 1, they
+# use this regex to know if the answer is correct or incorrect:
+
+^[Rr]eg.*[Ee]x.*
+
+# it means that whatever answer that starts with
+# reg and have ex (E and R are accepted as well) 
+# are considered correct 
+
+# 13 - Environment variables and shell
+
+# As other programming languages, shell has
+# its own syntax to give variables values (=) and 
+# to call ($) these variables 
+
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ numbers='one two three'
+libor@DESKTOP-2TIO74E MINGW64 ~/Downloads
+$ echo $numbers
+one two three
+
+# the variable PWD has the path of the working
+# directory, as in the example below: 
+
+libor@DESKTOP-2TIO74E MINGW64 ~
+$ echo $PWD
+/c/Users/libor
+
+# 15 - Controlling the shell prompt
+
+# One thing that is pretty useful is customizing
+# the prompt of your shell. Some developers like
+# to put the date and the name of project they are 
+# working on. 
+
+# that can be done by changing the PS1 variable,
+# inside .bash profile (Windows, MAC) or
+# .bashrc (Linux), here is a website to build your
+# PS1 easily:
+# http://bashrcgenerator.com
+
+# 16 - Alias
+
+# alias is a command that shows the stored short for
+# long commands like the example below:
+
+# Remember that I customized my prompt a little bit,
+# now it comes with the date / time on first line,
+# directory name and > on second line.
+
+ter jul 03 21:43:00
+~/Downloads > alias
+alias ll='ls -l'
+alias ls='ls -F --color=auto --show-control-chars'
+alias python='winpty python.exe'
+
+# Here we can see that there are 3 aliases stored,
+# ll, ls and python
+
+# We can use these short version of the commands to
+# run the original version of the command, like below:
+
+# alias can be created on the prompt line, but they will
+# only last until you close the window. If you want to make
+# it last, you must store it on .bash_profile file
+# Remember to cut the spaces on the command. Example below:
+alias now='date +"%T"'
+
+# More interesting information on shell:
+
+# Bash Guide for Beginners:
+# http://www.tldp.org/LDP/Bash-Beginners-Guide/html/
+
+# The Bash Academy
+# https://www.bash.academy/
+
+# Bash Programming
+# http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+
+# Regexr — Learn Regular Expressions
+# https://regexr.com/
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
